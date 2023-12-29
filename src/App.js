@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import injectContext from './store/appContext';
 import Button from './components/button'
 import Home from "./views/home";
 import Detalles from "./views/detalles";
- import { ToastContainer, toast } from "react-toastify";
- import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/detalles/:userID" element={<Detalles />} />
+          <Route path="*" element={<h1>404 Not founs</h1>}/>
         </Routes>
 
         <ToastContainer />
@@ -31,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default injectContext(App);
